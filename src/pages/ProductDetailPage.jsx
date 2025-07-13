@@ -4,7 +4,7 @@ import { productStore } from "../stores";
 import { loadProductDetailForPage } from "../services";
 import { router, withLifecycle } from "../router";
 import { PageWrapper } from "./PageWrapper";
-import { ErrorContent, ProductDetail } from "../components";
+import { ErrorContent, ProductDetail, PublicImage } from "../components";
 
 /**
  * 상품 상세 페이지 컴포넌트
@@ -27,7 +27,7 @@ export const ProductDetailPage = withLifecycle(
               onClick={() => window.history.back()}
               className="p-2 text-gray-700 hover:text-gray-900 transition-colors"
             >
-              <img src="/back-icon.svg" alt="뒤로" className="w-6 h-6" />
+              <PublicImage src="/back-icon.svg" alt="뒤로" className="w-6 h-6" />
             </button>
             <h1 className="text-lg font-bold text-gray-900">상품 상세</h1>
           </div>

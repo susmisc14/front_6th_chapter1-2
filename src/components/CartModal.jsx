@@ -3,6 +3,7 @@ import { createVNode } from "../lib";
 import { CartItem } from "./CartItem";
 import { clearCart, deselectAllCart, removeSelectedFromCart, selectAllCart } from "../services";
 import { UI_ACTIONS, uiStore } from "../stores";
+import { PublicImage } from "./PublicImage";
 
 /**
  * 장바구니 모달 컴포넌트
@@ -78,13 +79,13 @@ export function CartModal({ items = [], selectedAll = false, isOpen = false }) {
           {/* 헤더 */}
           <div className="sticky top-0 bg-white border-b border-gray-200 p-4 flex items-center justify-between">
             <h2 className="text-lg font-bold text-gray-900 flex items-center">
-              <img src="/cart-icon.svg" alt="장바구니" className="w-5 h-5 mr-2" />
+              <PublicImage src="/cart-icon.svg" alt="장바구니" className="w-5 h-5 mr-2" />
               장바구니
               {items.length > 0 && <span className="text-sm font-normal text-gray-600 ml-1">({items.length})</span>}
             </h2>
 
             <button id="cart-modal-close-btn" className="text-gray-400 hover:text-gray-600 p-1" onClick={close}>
-              <img src="/close-icon.svg" alt="닫기" className="w-6 h-6" />
+              <PublicImage src="/close-icon.svg" alt="닫기" className="w-6 h-6" />
             </button>
           </div>
 
@@ -93,7 +94,7 @@ export function CartModal({ items = [], selectedAll = false, isOpen = false }) {
             <div className="flex-1 flex items-center justify-center p-8">
               <div className="text-center">
                 <div className="text-gray-400 mb-4">
-                  <img src="/empty-cart-icon.svg" alt="빈 장바구니" className="mx-auto h-12 w-12" />
+                  <PublicImage src="/empty-cart-icon.svg" alt="빈 장바구니" className="mx-auto h-12 w-12" />
                 </div>
                 <h3 className="text-lg font-medium text-gray-900 mb-2">장바구니가 비어있습니다</h3>
                 <p className="text-gray-600">원하는 상품을 담아보세요!</p>

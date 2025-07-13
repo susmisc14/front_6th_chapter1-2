@@ -1,6 +1,7 @@
 /** @jsx createVNode */
 import { createVNode } from "../lib";
 import { toggleCartSelect, updateCartQuantity, removeFromCart } from "../services";
+import { PublicImage } from "./PublicImage";
 
 const handleQuantityIncrease = (e) => {
   const target = e.target.closest("[data-product-id]");
@@ -72,7 +73,7 @@ export function CartItem({ id, title, image, price, quantity, selected }) {
             data-product-id={id}
             onClick={handleQuantityDecrease}
           >
-            <img src="/minus-icon.svg" alt="감소" className="w-3 h-3" />
+            <PublicImage src="/minus-icon.svg" alt="감소" className="w-3 h-3" />
           </button>
 
           <input
@@ -92,7 +93,7 @@ export function CartItem({ id, title, image, price, quantity, selected }) {
             data-product-id={id}
             onClick={handleQuantityIncrease}
           >
-            <img src="/plus-icon.svg" alt="증가" className="w-3 h-3" />
+            <PublicImage src="/plus-icon.svg" alt="증가" className="w-3 h-3" />
           </button>
         </div>
       </div>

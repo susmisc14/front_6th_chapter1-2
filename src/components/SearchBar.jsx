@@ -1,6 +1,7 @@
 /** @jsx createVNode */
 import { createVNode } from "../lib";
 import { searchProducts, setCategory, setLimit, setSort } from "../services/index.js";
+import { PublicImage } from "./PublicImage";
 
 /**
  * 검색 및 필터 컴포넌트
@@ -140,7 +141,7 @@ export function SearchBar({ searchQuery = "", limit = 20, sort = "price_asc", ca
             onKeyDown={handleSearchKeyDown}
           />
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <img src="/search-icon.svg" alt="검색" className="h-5 w-5 text-gray-400" />
+            <PublicImage src="/search-icon.svg" alt="검색" className="h-5 w-5 text-gray-400" />
           </div>
         </div>
       </div>

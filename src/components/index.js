@@ -8,3 +8,4 @@ export * from "./Footer";
 export * from "./ProductCard";
 export * from "./ProductList";
 export * from "./ProductDetail";
+export * from "./PublicImage";

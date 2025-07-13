@@ -1,7 +1,7 @@
 /** @jsx createVNode */
 import { createVNode } from "../lib";
 import { cartStore, uiStore, UI_ACTIONS } from "../stores";
-import { CartModal, Footer, Toast } from "../components";
+import { CartModal, Footer, PublicImage, Toast } from "../components";
 
 // 장바구니 모달 열기 핸들러
 const close = () => {
@@ -32,7 +32,7 @@ export const PageWrapper = ({ headerLeft, children }) => {
                 className="relative p-2 text-gray-700 hover:text-gray-900 transition-colors"
                 onClick={close}
               >
-                <img src="/cart-header-icon.svg" alt="장바구니" className="w-6 h-6" />
+                <PublicImage src="/cart-header-icon.svg" alt="장바구니" className="w-6 h-6" />
                 {cartSize > 0 && cartCount}
               </button>
             </div>
