@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
+    "jsx": "preserve",
     "target": "ES2022",
     "useDefineForClassFields": true,
-    "module": "ESNext",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
     "skipLibCheck": true,
 
     /* Bundler mode */
