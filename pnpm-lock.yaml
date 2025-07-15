@@ -80,6 +80,12 @@ importers:
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
+      vite:
+        specifier: ^7.0.4
+        version: 7.0.4(@types/node@20.19.7)(yaml@2.8.0)
+      vitest:
+        specifier: ^3.2.4
+        version: 3.2.4(@types/node@20.19.7)(@vitest/ui@3.2.4)(jsdom@26.1.0)(msw@2.10.4(@types/node@20.19.7)(typescript@5.8.3))(yaml@2.8.0)
 
 packages:
 
