@@ -1,8 +1,8 @@
 /** @jsx createVNode */
 import { createVNode, renderElement } from "./lib";
-import { cartStore, productStore, uiStore } from "./stores";
-import { router } from "./router";
 import { HomePage, NotFoundPage, ProductDetailPage } from "./pages";
+import { router } from "./router";
+import { cartStore, productStore, uiStore } from "./stores";
 import { withBatch } from "./utils";
 
 // 홈 페이지 (상품 목록)
