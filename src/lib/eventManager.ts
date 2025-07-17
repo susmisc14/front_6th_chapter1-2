@@ -1,4 +1,4 @@
-type Listener = { eventType: string; handler: EventListener };
+type Listener = { eventType: string; handler: Function };
 
 const eventMap = new WeakMap<Element, Listener[]>();
 const eventTypes = new Set<string>();
@@ -9,7 +9,7 @@ export function setupEventListeners(root: Element) {
   });
 }
 
-export function addEvent(element: Element, eventType: string, handler: EventListener) {
+export function addEvent(element: Element, eventType: string, handler: Function) {
   if (!eventTypes.has(eventType)) {
     eventTypes.add(eventType);
   }
@@ -20,7 +20,7 @@ export function addEvent(element: Element, eventType: string, handler: EventList
   eventMap.set(element, listeners);
 }
 
-export function removeEvent(element: Element, eventType: string, handler: EventListener) {
+export function removeEvent(element: Element, eventType: string, handler: Function) {
   const listeners = eventMap.get(element);
 
   if (!listeners) return;
@@ -37,7 +37,15 @@ export function removeEvent(element: Element, eventType: string, handler: EventL
 }
 
 function handleDelegatedEvent(event: Event) {
-  (eventMap.get(event.target as Element) || [])
-    .filter((listener) => listener.eventType === event.type)
-    .forEach((listener) => listener.handler(event));
+  let target = event.target;
+
+  while (target) {
+    if (!(target instanceof Element)) break;
+
+    (eventMap.get(target) || [])
+      .filter((listener) => listener.eventType === event.type)
+      .forEach((listener) => listener.handler(event));
+
+    target = target.parentElement;
+  }
 }
