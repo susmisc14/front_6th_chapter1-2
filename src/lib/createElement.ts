@@ -38,41 +38,42 @@ export function createElement(vNode: VNode): Node {
   return $el;
 }
 
+// helpers
 function updateAttributes($el: HTMLElement, props: Record<string, any>) {
   if (!props) return;
 
   for (const [key, value] of Object.entries(props)) {
-    // 'children' prop은 속성이 아니므로 건너뜁니다.
+    // 1. 'children' prop은 속성이 아니므로 건너뜁니다.
     if (key === "children") continue;
 
-    // 이벤트 핸들러 설정 (e.g., onClick)
+    // 2. 이벤트 핸들러 설정
     if (key.startsWith("on")) {
       const eventType = key.slice(2).toLowerCase();
       addEvent($el, eventType, value);
-      continue;
     }
 
-    // className을 class 속성으로 변환
-    if (key === "className") {
+    // 3. className을 class 속성으로 변환
+    else if (key === "className") {
       $el.setAttribute("class", value);
-      continue;
     }
 
-    // style 객체 처리
-    if (key === "style" && typeof value === "object") {
+    // 4. style 객체 처리
+    else if (key === "style" && typeof value === "object") {
       Object.entries(value).forEach(([styleKey, styleValue]) => {
         ($el.style as any)[styleKey] = styleValue;
       });
-      continue;
     }
 
-    // data-* 속성 처리
-    if (key.startsWith("data-")) {
-      $el.setAttribute(key, value);
-      continue;
+    // 5. boolean type props는 직접 업데이트되어야 한다.
+    else if (typeof value === "boolean") {
+      if (value) {
+        ($el as any)[key] = true;
+      }
     }
 
     // 기타 모든 속성 설정
-    $el.setAttribute(key, value);
+    else {
+      $el.setAttribute(key, value);
+    }
   }
 }
